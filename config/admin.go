@@ -1,11 +1,11 @@
 package config
 
 import (
-	"github.com/goravel/framework/foundation"
+	"github.com/goravel/framework/facades"
 )
 
 func init() {
-	config := foundation.App.MakeConfig()
+	config := facades.Config()
 	config.Add("admin", map[string]any{
 		// 应用名称
 		"app_name": config.Env("ADMIN_APP_NAME", "Goravel"),
