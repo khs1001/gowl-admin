@@ -1,0 +1,20 @@
+{
+	"type":"@crud",
+	"columns":[
+		"@id#column",
+		"@name#column",
+		"@slug#column",
+		"@api#column",
+		"@created_at#column"
+	],
+	"headerToolbar": [
+		"@create#button",
+		"bulkActions",
+		"@auto_generate#button",
+		"reload"
+	],
+	"orderBy":"custom_order",
+	"orderDir":"asc",
+	"footerToolbar":[],
+	"perPage": 10000
+}

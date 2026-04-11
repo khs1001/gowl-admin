@@ -1,0 +1,17 @@
+{
+	"type":"@crud",
+	"columns":[
+		"@id#column",
+		"@title#column",
+		"@icon#column",
+		"@url#column",
+		"@custom_order#column",
+		"@visible#column",
+		"@is_home#column",
+		"@created_at#column"
+	],
+	"orderBy":"custom_order",
+	"orderDir":"asc",
+	"footerToolbar":[],
+	"page": 0
+}

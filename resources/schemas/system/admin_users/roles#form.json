@@ -1,0 +1,11 @@
+{
+    "type": "select",
+    "name": "roles",
+    "label": "角色",
+    "searchable": true,
+    "multiple": true,
+    "labelField": "name",
+    "valueField": "id",
+    "joinValues": false,
+    "source":"/system/admin_role"
+}

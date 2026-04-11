@@ -1,0 +1,86 @@
+{
+	"body": [
+		{
+			"api": "post:/user",
+			"body": [
+				{
+					"type": "fieldset",
+					"title": "基础信息",
+					"collapsable": false,
+					"body": [
+                        "@avatar#form",
+                        "@name#form"
+					],
+					"subFormMode": "normal",
+					"className": "",
+					"bodyClassName": "p-5"
+				},
+				{
+					"type": "container",
+					"body": [],
+					"style": {
+						"position": "relative",
+						"display": "flex",
+						"inset": "auto",
+						"flexWrap": "nowrap",
+						"flexDirection": "column",
+						"alignItems": "flex-start",
+						"height": "30px",
+						"overflowY": "visible"
+					},
+					"size": "none",
+					"wrapperBody": false,
+					"isFixedHeight": true,
+					"isFixedWidth": false
+				},
+				{
+					"type": "fieldset",
+					"title": "修改密码",
+					"collapsable": true,
+					"body": [
+                        "@password#form",
+                        "@confirm_password#form",
+                        "@old_password#form"
+					],
+					"collapsed": true,
+					"subFormMode": "normal",
+					"className": "",
+					"bodyClassName": "p-5",
+					"headingClassName": ""
+				}
+			],
+			"initApi": "/user",
+			"mode": "horizontal",
+			"panelClassName": "px-48 m:px-0",
+			"title": "",
+			"type": "form",
+			"actions": [
+				{
+					"type": "submit",
+					"label": "提交",
+					"primary": true
+				}
+			],
+			"feat": "Edit",
+			"dsType": "api",
+			"labelAlign": "left",
+			"onEvent": {
+				"submitSucc": {
+					"weight": 0,
+					"actions": [
+						{
+							"ignoreError": false,
+							"actionType": "custom",
+							"script": "setTimeout(() => window.location.reload(), 1500)"
+						}
+					]
+				}
+			}
+		}
+	],
+	"type": "page",
+	"asideResizor": false,
+	"pullRefresh": {
+		"disabled": true
+	}
+}

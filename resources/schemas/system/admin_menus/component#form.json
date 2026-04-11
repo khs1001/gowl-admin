@@ -1,0 +1,8 @@
+{
+    "type": "input-text",
+    "name": "component",
+    "label": "组件",
+    "description": "默认为 amis , 非自定义前端页面请勿修改",
+    "value": "amis",
+    "hiddenOn": "url_type != 1"
+}

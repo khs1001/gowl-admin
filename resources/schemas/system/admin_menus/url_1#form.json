@@ -1,0 +1,15 @@
+{
+    "type": "input-text",
+    "name": "url",
+    "label": "路由",
+    "required": true,
+    "validateOnChange": true,
+    "validations": {
+        "matchRegexp": "/^(http(s)?\\:\\/)?(\\/)+/"
+    },
+    "validationErrors": {
+        "matchRegexp": "需要以 / 开头"
+    },
+    "placeholder": "eg: /admin_menus",
+    "hiddenOn": "url_type == 2"
+}

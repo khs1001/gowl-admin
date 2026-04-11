@@ -1,0 +1,6 @@
+{
+    "name": "avatar",
+    "label": "头像",
+    "type": "avatar",
+    "src": "${avatar}"
+}

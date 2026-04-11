@@ -1,0 +1,7 @@
+{
+    "type": "input-text",
+    "name": "value",
+    "label": "值",
+    "required": true,
+    "maxLength": 255
+}

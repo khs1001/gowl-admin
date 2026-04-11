@@ -1,0 +1,5 @@
+{
+    "type": "@form",
+    "api": "put:{{.Path}}/${id}",
+    "initApi": "get:{{.Path}}/${id}"
+}

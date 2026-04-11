@@ -1,0 +1,20 @@
+{
+    "type": "group",
+    "body": [
+        {
+            "type": "input-text",
+            "name": "iframe_url",
+            "label": "IframeUrl",
+            "required": true,
+            "validateOnChange": true,
+            "validations": {
+                "matchRegexp": "/^(http(s)?\\:\\/)?(\\/)+/"
+            },
+            "validationErrors": {
+                "matchRegexp": "需要以 / 开头"
+            },
+            "placeholder": "eg: https://www.qq.com",
+            "hiddenOn": "url_type != 3"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "cascade": true,
+    "className": "h-full b-none",
+    "heightAuto": true,
+    "inputClassName": "h-full tree-full",
+    "joinValues": false,
+    "label": "",
+    "multiple": true,
+    "name": "permissions",
+    "searchable": true,
+    "valueField": "id",
+    "labelField": "name",
+    "size": "full",
+    "source": "/system/admin_permission?orderBy=custom_order",
+    "type": "input-tree"
+}

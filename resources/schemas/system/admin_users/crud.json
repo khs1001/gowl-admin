@@ -1,0 +1,19 @@
+{
+	"type": "@crud",
+	"columns": [
+		"@id#column",
+		"@avatar#column",
+		"@name#column",
+		"@roles#column",
+		"@enabled#column",
+		"@created_at#column"
+	],
+	"itemActions":["@reset_password#button","@edit#button","@delete#button"],
+	"quickSaveItemApi": {
+		"url": "{{.Path}}/${id}",
+		"method": "put",
+		"data": {
+			"is_enable": "${enabled}"
+		}
+	}
+}

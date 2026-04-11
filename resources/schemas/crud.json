@@ -1,0 +1,28 @@
+{
+	"type": "crud",
+	"api": {
+		"url": "{{.Path}}",
+		"method": "get"
+	},
+	"title": false,
+	"perPage": 20,
+	"orderBy": "id",
+	"orderDir": "desc",
+	"bulkActions":["@bulk_delete#button"],
+	"itemActions":["@edit#button","@delete#button"],
+	"syncLocation": false,
+	"headerToolbar": [
+		"@create#button",
+		"bulkActions",
+		"reload"
+	],
+	"filterTogglable": true,
+	"perPageAvailable": [
+		10,
+		20,
+		50,
+		100
+	],
+	"quickSaveItemApi": "@crud.quickSaveItemApi",
+	"alwaysShowPagination": true
+}

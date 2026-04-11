@@ -1,0 +1,9 @@
+{
+    "name": "custom_order",
+    "label": "排序",
+    "quickEdit": {
+        "type": "input-number",
+        "min": 0,
+        "saveImmediately": true
+    }
+}

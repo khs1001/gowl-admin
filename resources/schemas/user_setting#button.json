@@ -1,0 +1,7 @@
+{
+    "icon": "fa fa-user-gear",
+    "type": "button",
+    "label": "个人设置",
+    "onClick": "window.location.hash = \"#/user_setting\"",
+    "iconClassName": "pr-2"
+}

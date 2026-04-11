@@ -1,0 +1,24 @@
+{
+    "type": "@crud",
+    "api": {
+		"url": "{{.Path}}?_action=getData&parent_id=${dict_type || 0}&page=${page}&perPage=${perPage}&orderBy=${orderBy}&orderDir=${orderDir}",
+		"method": "get"
+	},
+    "columns":[
+        "@id#column",
+        "@value#column",
+        "@label#column",
+        "@is_enable#column",
+        "@sort#column",
+        "@created_at#column"
+    ],
+    "syncLocation": true,
+	"quickSaveItemApi": {
+		"url": "{{.Path}}/${id}",
+		"method": "put",
+		"data": {
+			"is_enable":"${is_enable}",
+            "sort":"${sort}"
+		}
+	}
+}

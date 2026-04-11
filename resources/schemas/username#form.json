@@ -1,0 +1,6 @@
+{
+    "type": "input-text",
+    "name": "username",
+    "label": "用户名",
+    "required": true
+}

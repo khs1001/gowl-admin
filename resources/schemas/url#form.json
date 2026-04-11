@@ -1,0 +1,10 @@
+{
+    "clearable": true,
+    "label": "路径",
+    "name": "url",
+    "required": true,
+    "type": "input-text",
+    "validations": {
+        "maxLength": 255
+    }
+}

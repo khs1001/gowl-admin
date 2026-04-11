@@ -1,0 +1,32 @@
+{
+    "type": "@form",
+    "body": [
+        "@title#form",
+        "@icon#form",
+        "@parent_id#form",
+        {
+            "type": "group",
+            "body": [
+                "@custom_order#form",
+                "@visible#form"
+            ]
+        },
+        "@url_type#form",
+        "@url_1#form",
+        "@url_2#form",
+        "@url_3#form",
+        {
+            "type": "fieldset",
+            "titlePosition": "top",
+            "title": "更多",
+            "collapsable": true,
+            "collapsed": true,
+            "body": [
+                "@component#form",
+                "@keep_alive#form",
+                "@is_home#form",
+                "@is_full#form"
+            ]
+        }
+    ]
+}

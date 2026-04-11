@@ -1,0 +1,8 @@
+{
+	"api": "delete:{{.Path}}/${ids}",
+	"actionType": "ajax",
+	"confirmText": "确认删除选中项？",
+	"confirmTitle": "确认",
+	"label":"删除",
+	"type":"button"	
+}

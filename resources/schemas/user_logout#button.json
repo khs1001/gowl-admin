@@ -1,0 +1,7 @@
+{
+    "icon": "fa-solid fa-right-from-bracket",
+    "type": "button",
+    "label": "退出登录",
+    "onClick": "window.$owl.logout()",
+    "iconClassName": "pr-2"
+}

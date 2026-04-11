@@ -1,0 +1,10 @@
+{
+    "name": "roles",
+    "label": "角色",
+    "type": "each",
+    "items": {
+        "type": "tag",
+        "label": "${name}",
+        "className": "my-1"
+    }
+}

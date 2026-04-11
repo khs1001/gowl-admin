@@ -1,0 +1,7 @@
+{
+    "type": "json-schema",
+    "name": "options",   
+    "label": "配置",
+    "visibleOn":"this.type!='dict_type'",
+    "schema": "/system/admin_dict/schema?type=${type}"
+}

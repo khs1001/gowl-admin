@@ -4,7 +4,6 @@ import (
 	"reflect"
 
 	"github.com/gogf/gf/v2/util/gconv"
-	"github.com/goravel/framework/facades"
 )
 
 // ListToTree 利用反射将列表转换为树形结构
@@ -16,7 +15,6 @@ import (
 func ListToTree(nodes interface{}, parentIdField, idField, childrenField string, rootParentId interface{}) interface{} {
 	// 检查输入是否为切片
 	val := reflect.ValueOf(nodes)
-	facades.Log().Info(val, val.Kind())
 	if val.Kind() != reflect.Slice {
 		return nil
 	}

@@ -1,0 +1,10 @@
+{
+    "name": "api",
+    "label": "路由",
+    "type": "each",
+    "items": {
+        "type": "tag",
+        "label": "${item}",
+        "className": "my-1"
+    }
+}

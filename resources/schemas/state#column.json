@@ -1,0 +1,6 @@
+{
+    "type": "status",
+    "name": "state",
+    "width": "120",
+    "label": "状态"
+}

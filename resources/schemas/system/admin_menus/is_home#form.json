@@ -1,0 +1,9 @@
+{
+    "type": "switch",
+    "name": "is_home",
+    "label": "首页",
+    "onText": "是",
+    "offText": "否",
+    "description": "在多页签卡模式下，页面标签将固定在左侧",
+    "value": 0
+}

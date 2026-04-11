@@ -1,0 +1,9 @@
+{
+    "type": "switch",
+    "name": "is_full",
+    "label": "全屏",
+    "onText": "是",
+    "offText": "否",
+    "description": "开启后将隐藏该页面的菜单栏部分",
+    "value": 0
+}

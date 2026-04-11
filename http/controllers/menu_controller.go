@@ -10,7 +10,15 @@ type MenuController struct {
 }
 
 func NewMenuController() *MenuController {
-	return &MenuController{
+	c := &MenuController{
 		CrudController: core.NewCrudController[models.AdminMenu](),
 	}
+	c.ListParams.IsTreeList = true
+	c.ListParams.ChildrenField = "Children"
+	c.ListParams.ParentIdField = "ParentId"
+	c.ListParams.IdField = "ID"
+	c.ListParams.RootParentId = 0
+
+	return c
+
 }

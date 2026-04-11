@@ -1,0 +1,22 @@
+{
+    "name": "icon",
+    "label": "图标",
+    "type": "flex",
+    "className": "text-center h-full",
+    "justify": "start",
+    "items": [
+        {
+            "type": "wrapper",
+            "size": "none",
+            "body": {
+                "type": "custom-svg-icon",
+                "icon": "${icon}",
+                "className": "mr-2 text-xl h-full"
+            }
+        },
+        {
+            "type": "tpl",
+            "tpl": "${icon}"
+        }
+    ]
+}

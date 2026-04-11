@@ -1,0 +1,8 @@
+{
+    "type": "button",
+    "actionType": "ajax",
+    "label": "自动生成",
+    "level": "success",
+    "confirmText": "权限信息会在 截断权限表&权限菜单关联表 后重新生成, 是否继续操作 ?",
+    "api": "/system/admin_permission/auto_generate"
+}

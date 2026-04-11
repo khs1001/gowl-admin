@@ -5,7 +5,7 @@ import (
 )
 
 type AdminMenu struct {
-	orm.Model
+	ID          uint         `gorm:"primaryKey" json:"id"`
 	ParentId    int          `json:"parent_id" db:"parent_id"`
 	CustomOrder int          `json:"custom_order" db:"custom_order"`
 	Title       string       `json:"title" db:"title"`
@@ -20,6 +20,7 @@ type AdminMenu struct {
 	IsFull      int8         `json:"is_full" db:"is_full"`
 	Extension   string       `json:"extension" db:"extension"`
 	Children    []*AdminMenu `json:"children" gorm:"-"`
+	orm.Timestamps
 }
 
 func (r *AdminMenu) TableName() string {

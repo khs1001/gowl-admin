@@ -1,0 +1,10 @@
+{
+    "type":"@form",
+    "body":[
+        "@id#form",
+        "@name#form",
+        "@slug#form",
+        "@is_enable#form",
+        "@remark#form"
+    ]
+}

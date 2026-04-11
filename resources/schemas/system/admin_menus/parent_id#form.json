@@ -1,0 +1,10 @@
+{
+    "type": "tree-select",
+    "name": "parent_id",
+    "label": "父级",
+    "id": "parent_select",
+    "labelField": "title",
+    "valueField": "id",
+    "showIcon": false,
+    "source": "/system/admin_menus?show_root=1&orderBy=custom_order"
+}

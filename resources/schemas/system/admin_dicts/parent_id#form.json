@@ -1,0 +1,11 @@
+{
+    "type": "select",
+    "name": "parent_id",
+    "label": "类型",
+    "source": "{{.Path}}/dict_type_options",
+    "clearable": true,
+    "required": true,
+    "value": "${dict_type || 1}",
+    "valueField": "id",
+    "labelField": "value"
+}

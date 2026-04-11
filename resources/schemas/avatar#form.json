@@ -1,0 +1,6 @@
+{
+    "type": "input-image",
+    "receiver": "/upload_image",
+    "name": "avatar",
+    "label": "头像"
+}

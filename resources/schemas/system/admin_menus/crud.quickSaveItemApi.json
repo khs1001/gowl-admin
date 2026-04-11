@@ -1,0 +1,8 @@
+{
+	"type": "@crud.quickSaveItemApi",
+	"data": {
+		"visible": "${visible}",
+		"is_home": "${is_home}",
+		"custom_order": "${custom_order}"
+	}
+}

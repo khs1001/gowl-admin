@@ -1,0 +1,23 @@
+{
+	"type":"@crud",
+	"columns":[
+		"@id#column",
+		"@name#column",
+		"@slug#column",
+		"@remark#column",
+		"@is_enable#column",
+		"@created_at#column"
+	],
+	"itemActions":[
+		"@set_permissions#button",
+		"@edit#button",
+		"@delete#button"
+	],
+	"quickSaveItemApi": {
+		"url": "{{.Path}}/${id}",
+		"method": "put",
+		"data": {
+			"is_enable":"${is_enable}"
+		}
+	}
+}

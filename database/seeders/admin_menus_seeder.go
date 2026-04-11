@@ -3,7 +3,6 @@ package seeders
 import (
 	"github.com/khs1001/gowl-admin/models"
 
-	"github.com/goravel/framework/database/orm"
 	"github.com/goravel/framework/facades"
 )
 
@@ -19,36 +18,52 @@ func (s *AdminMenusSeeder) Signature() string {
 func (s *AdminMenusSeeder) Run() error {
 	data := []*models.AdminMenu{
 		{
-			Title:  "控制台",
-			Icon:   "mdi:chart-line",
-			Url:    "/dashboard",
-			IsHome: 1,
+			Title:   "控制台",
+			Icon:    "mdi:chart-line",
+			Url:     "/dashboard",
+			UrlType: 1,
+			IsHome:  1,
+			Visible: 1,
 		},
 		{
-			Title: "系统管理",
-			Icon:  "material-symbols:settings-outline",
-			Url:   "/system",
+			Title:   "系统管理",
+			Icon:    "material-symbols:settings-outline",
+			Url:     "/system",
+			Visible: 1,
+			UrlType: 1,
 		},
 		{
-			Title: "管理员",
-			Icon:  "ph:user-gear",
-			Url:   "/system/admin_users",
+			ParentId: 2,
+			Title:    "管理员",
+			Icon:     "ph:user-gear",
+			Url:      "/system/admin_users",
+			Visible:  1,
+			UrlType:  1,
 		},
 		{
-			Title: "角色",
-			Icon:  "carbon:user-role",
-			Url:   "/system/admin_roles",
+			ParentId: 2,
+			Title:    "角色",
+			Icon:     "carbon:user-role",
+			Url:      "/system/admin_roles",
+			Visible:  1,
+			UrlType:  1,
 		},
 		{
-			Title: "菜单",
-			Icon:  "ant-design:menu-unfold-outlined",
-			Url:   "/system/admin_menus",
+			ParentId: 2,
+			Title:    "菜单",
+			Icon:     "ant-design:menu-unfold-outlined",
+			Url:      "/system/admin_menus",
+			Visible:  1,
+			UrlType:  1,
 		},
 		{
-			Title: "设置",
-			Icon:  "akar-icons:settings-horizontal",
-			Url:   "/system/settings",
+			ParentId: 2,
+			Title:    "设置",
+			Icon:     "akar-icons:settings-horizontal",
+			Url:      "/system/settings",
+			Visible:  1,
+			UrlType:  1,
 		},
 	}
-	return facades.Orm().Query().Select(orm.Associations).Create(data)
+	return facades.Orm().Query().Create(data)
 }

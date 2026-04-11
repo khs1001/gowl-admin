@@ -1,0 +1,9 @@
+{
+    "type": "json-schema-editor",
+    "name": "options",    
+    "mini": true,
+    "visibleOn":"this.type=='dict_type'",
+    "label": "配置模板",
+    "rootTypeMutable": true,
+    "showRootInfo": true
+}

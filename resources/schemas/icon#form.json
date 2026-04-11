@@ -1,0 +1,7 @@
+{
+    "name": "icon",
+    "label": "图标",
+    "type": "input-text",
+    "clearable": true,
+    "description": "在 <a href='https://icones.js.org' target='_blank'>icones</a> 中寻找可用图标"
+}

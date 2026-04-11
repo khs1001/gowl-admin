@@ -1,0 +1,11 @@
+{
+    "type": "switch",
+    "name": "enabled",
+    "label": "可用",
+    "onText": "是",
+    "offText": "否",
+    "trueValue": 1,
+    "falseValue": 0,
+    "value": 1
+    
+}

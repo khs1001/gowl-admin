@@ -1,0 +1,14 @@
+{
+	"icon": "{{.avatar}}",
+	"type": "dropdown-button",
+	"label": "{{.name}}",
+	"trigger": "hover",
+	"className": "h-full w-full",
+	"hideCaret": true,
+	"btnClassName": "navbar-user w-full",
+	"menuClassName": "min-w-0",
+	"buttons": [
+		"@user_setting#button",
+		"@user_logout#button"
+	]
+}

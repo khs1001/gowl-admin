@@ -1,0 +1,10 @@
+{
+	"drawer": {
+		"body": "@edit_form",
+		"title": "编辑",
+		"position": "right"
+	},
+	"actionType": "drawer",
+	"label":"编辑",
+	"type":"button"	
+}

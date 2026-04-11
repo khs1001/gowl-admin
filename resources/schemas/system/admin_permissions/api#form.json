@@ -1,0 +1,9 @@
+{
+    "type": "input-array",
+    "name": "api",
+    "label": "Api",
+    "items": {
+        "type": "input-text",
+        "required": true
+    }
+}

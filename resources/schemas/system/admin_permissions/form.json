@@ -1,0 +1,25 @@
+{
+    "type": "@form",
+    "body": [
+        "@id#form",
+        "@name#form",
+        "@slug#form",
+        "@parent_id#form",
+        "@api#form",
+        "@custom_order#form",
+        "@menus#form"
+    ],
+    "onEvent": {
+        "inited": {
+            "actions": [
+                {
+                    "actionType": "setValue",
+                    "componentId": "parent_select",
+                    "args": {
+                        "value": "${responseData.parent_id || \"\"}"
+                    }
+                }
+            ]
+        }
+    }
+}

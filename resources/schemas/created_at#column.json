@@ -1,0 +1,8 @@
+{
+	"width": 160,
+	"format": "YYYY-MM-DD HH:mm:ss",
+	"sortable": true,
+	"name": "created_at",
+	"type": "date",
+	"label": "创建时间"
+}

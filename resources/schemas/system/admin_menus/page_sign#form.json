@@ -1,0 +1,12 @@
+{
+    "clearable": true,
+    "label": "页面",
+    "name": "component",
+    "type": "input-text",
+    "value": "index",
+    "labelRemark": "默认为：index,会根据路径依次向上层查找对应的index.json模板内容\n 为空时，会访问后台对应路由",
+    "validations": {
+        "maxLength": 255
+    },
+    "visibleOn": "url_type == 4"
+}

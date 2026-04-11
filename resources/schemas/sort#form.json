@@ -1,0 +1,10 @@
+{
+    "type": "input-number",
+    "name": "sort",
+    "label": "排序",
+    "required": true,
+    "displayMode": "enhance",
+    "description": "升序排序",
+    "min": 0,
+    "value": 0
+}

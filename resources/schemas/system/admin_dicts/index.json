@@ -1,0 +1,44 @@
+{
+    "type": "page",
+    "data":{
+        "dict_type": 0
+    },
+    "body": [
+        {
+            "type": "flex",
+            "items": [
+                {
+                    "type": "card",
+                    "className": "w-1/4 mr-5 mb-0 min-w-xs",
+                    "body": [
+                        {
+                            "type": "flex",
+                            "className": "mb-4",
+                            "justify": "space-between",
+                            "items": [
+                                {
+                                    "type": "wrapper",
+                                    "size": "none",
+                                    "body": "字典类型",
+                                    "className": "flex items-center text-md"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "form",
+                            "wrapWithPanel": false,
+                            "body": [
+                                "@dict_type#form"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "page",
+                    "className": "m:overflow-auto",
+                    "body": "@crud"
+                }
+            ]
+        }
+    ]
+}

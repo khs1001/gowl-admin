@@ -1,0 +1,9 @@
+{
+    "name": "is_home",
+    "label": "首页",
+    "quickEdit": {
+        "type": "checkbox",
+        "mode": "inline",
+        "saveImmediately": true
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "actionType": "drawer",
+    "drawer": {
+        "body": [
+            {
+                "api": {
+                    "url":"{{.Path}}/${id}",
+                    "method":"put",
+                    "data":{
+                        "id":"${id}",
+                        "permissions":"${permissions}"
+                    }
+                },
+                "body": [
+                    "@permissions#form"
+                ],
+                "initApi": "get:{{.Path}}/${id}",
+                "mode": "normal",
+                "type": "form"
+            }
+        ],
+        "closeOnEsc": true,
+        "closeOnOutside": true,
+        "resizable": true,
+        "title": "设置权限",
+        "type": "drawer"
+    },
+    "label": "设置权限",
+    "visibleOn": "${slug !== 'administrator'}",
+    "type": "button"
+}

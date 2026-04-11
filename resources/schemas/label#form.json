@@ -1,0 +1,6 @@
+{
+    "type":"input-text",
+    "label":"标签",
+    "name":"label",
+    "required":true
+}

@@ -1,0 +1,12 @@
+{
+	"icon": "fa fa-plus",
+	"level": "primary",
+	"drawer": {
+		"body": "@create_form",
+		"title": "新增",
+		"position": "right"
+	},
+	"actionType": "drawer",
+	"label":"新增",
+	"type":"button"	
+}

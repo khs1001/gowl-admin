@@ -1,0 +1,17 @@
+{
+    "size": "full",
+    "label": "菜单",
+    "source": "/system/admin_menu?orderBy=custom_order",
+    "cascade": true,
+    "multiple": true,
+    "className": "h-full b-none",
+    "heightAuto": true,
+    "joinValues": false,
+    "labelField": "title",
+    "hideNodePathLabel": true,
+    "searchable": true,
+    "maxTagCount":5,
+    "valueField": "id",
+    "name": "menus",
+    "type":"tree-select"
+}

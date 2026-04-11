@@ -1,0 +1,10 @@
+{
+    "type": "input-number",
+    "name": "custom_order",
+    "label": "排序",
+    "required": true,
+    "labelRemark": "升序排序",
+    "displayMode": "enhance",
+    "min": 0,
+    "value": 0
+}

@@ -18,6 +18,7 @@ func Admin(router route.Router) {
 		index := controllers.NewIndexController()
 		router.Get("_settings", index.Settings)      // 获取系统配置
 		router.Post("_settings", index.SaveSettings) // 保存系统配置
+		router.Get("page_schema", index.PageSchema)  // 获取页面配置
 
 		// 登录相关
 		auth := controllers.NewAuthController()

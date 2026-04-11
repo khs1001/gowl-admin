@@ -1,0 +1,9 @@
+{
+    "type": "switch",
+    "name": "keep_alive",
+    "label": "缓存页面",
+    "onText": "是",
+    "offText": "否",
+    "description": "开启后页面将缓存，重新打开时不会重新加载",
+    "value": 0
+}

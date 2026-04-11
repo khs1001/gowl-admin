@@ -1,0 +1,5 @@
+{
+    "type":"textarea",
+    "label":"备注",
+    "name":"remark"
+}

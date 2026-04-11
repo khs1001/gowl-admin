@@ -1,0 +1,11 @@
+{
+    "label": "可用",
+    "name": "enabled",
+    "quickEdit": {
+        "type": "checkbox",
+        "mode": "inline",
+        "trueValue": 1,
+        "falseValue": 0,
+        "saveImmediately": true
+    }
+}

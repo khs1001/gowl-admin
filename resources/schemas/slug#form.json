@@ -1,0 +1,6 @@
+{
+    "type":"input-text",
+    "label":"标识",
+    "name":"slug",
+    "required":true
+}

@@ -1,0 +1,24 @@
+{
+    "label": "头像",
+    "name": "avatar",
+    "receiver": {
+        "method": "post",
+        "url": "/upload",
+        "requestAdaptor": "",
+        "adaptor": "",
+        "messages": {}
+    },
+    "type": "input-image",
+    "id": "u:b8e333d75acb",
+    "accept": ".jpeg, .jpg, .png, .gif",
+    "uploadType": "fileReceptor",
+    "proxy": true,
+    "multiple": false,
+    "hideUploadButton": true,
+    "autoUpload": true,
+    "crop": {
+        "viewMode": 1
+    },
+    "cropQuality": 0.7,
+    "limit": false
+}

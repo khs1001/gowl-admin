@@ -48,6 +48,7 @@ func (r *ServiceProvider) RegisterPublishes(app foundation.Application) {
 	// 发布视图资源到应用的公共目录
 	app.Publishes(PackageName, map[string]string{
 		"admin-views/dist": app.PublicPath("admin-assets"),
+		"resources":        app.ResourcePath(""),
 	}, "views")
 }
 

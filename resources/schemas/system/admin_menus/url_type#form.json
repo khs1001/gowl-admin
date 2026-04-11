@@ -1,0 +1,12 @@
+{
+    "type": "list-select",
+    "name": "url_type",
+    "label": "类型",
+    "options": {
+        "1": "路由",
+        "2": "外链",
+        "3": "Iframe",
+        "4": "页面"
+    },
+    "value": 1
+}
