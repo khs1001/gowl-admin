@@ -25,6 +25,7 @@ func (r *M20250317203500CreateAdminUsersTable) Up() error {
 			table.String("name", 50).Comment("名称")
 			table.String("avatar", 255).Comment("头像")
 			table.TinyInteger("enabled").Default(1).Comment("是否启用")
+			table.String("remember_token")
 			table.Timestamps()
 			table.Unique("username")
 		})

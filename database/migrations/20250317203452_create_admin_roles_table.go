@@ -19,10 +19,9 @@ func (r *M20250317203452CreateAdminRolesTable) Up() error {
 		return facades.Schema().Create("admin_roles", func(table schema.Blueprint) {
 			table.ID()
 			table.String("name", 50).Comment("角色名称")
-			table.String("sign", 50).Comment("角色标识")
+			table.String("slug", 50).Comment("角色标识")
 			table.Timestamps()
-
-			table.Unique("sign")
+			table.Unique("slug")
 		})
 	}
 

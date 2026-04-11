@@ -14,6 +14,12 @@ func main() {
 	setup := packages.Setup(os.Args)
 	serviceProvider := "&admin.ServiceProvider{}"
 	moduleImport := setup.Paths().Module().Import()
+	guard := `map[string]any{
+		"driver":   "jwt",
+		"provider": "user",
+	}`
+	authConfigPath := path.Config("auth.go")
+	guardsConfig := match.Config("auth.guards")
 	configPath := path.Config("admin.go")
 	config, err := file.GetPackageContent(setup.Paths().Module().String(), "config/admin.go")
 	if err != nil {
@@ -28,7 +34,14 @@ func main() {
 
 		// Add config
 		modify.File(configPath).Overwrite(config),
+		// Add oss disk to filesystems.go
+		modify.GoFile(authConfigPath).
+			Find(guardsConfig).Modify(modify.AddConfig("admin", guard)),
 	).Uninstall(
+		// Remove auth guard
+		modify.GoFile(authConfigPath).
+			Find(guardsConfig).Modify(modify.RemoveConfig("admin")),
+
 		// Remove config/admin.go
 		modify.File(configPath).Remove(),
 

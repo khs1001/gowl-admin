@@ -59,7 +59,7 @@ func (r *ServiceProvider) RegisterMigrations(app foundation.Application) {
 		&migrations.M20250317112835CreateAdminSettingsTable{},
 		&migrations.M20250317203511CreateAdminMenuPermissionTable{},
 		&migrations.M20250317203456CreateAdminRolePermissionTable{},
-		&migrations.M20250317203505CreateAdminUserRoleTable{},
+		&migrations.M20250317203505CreateAdminRoleUsersTable{},
 		&migrations.M20250317120027CreateAdminMenusTable{},
 		&migrations.M20250318152030CreateAdminPermissionsTable{},
 		&migrations.M20250317203452CreateAdminRolesTable{},

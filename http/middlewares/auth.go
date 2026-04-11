@@ -41,7 +41,8 @@ func Auth(ctx http.Context) {
 		return
 	}
 
-	payload, err := facades.Auth(ctx).Parse(token)
+	guard := facades.Config().GetString(consts.AdminAuthGuard)
+	payload, err := facades.Auth(ctx).Guard(guard).Parse(token)
 	facades.Log().Debugf("payload %v, err %v", payload, err)
 
 	if err != nil {

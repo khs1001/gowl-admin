@@ -3,106 +3,96 @@ package core
 import (
 	"strings"
 
-	"github.com/gogf/gf/v2/util/gconv"
-	"github.com/goravel/framework/contracts/database/orm"
 	"github.com/goravel/framework/contracts/http"
-	"github.com/goravel/framework/facades"
 )
 
-type IndexReq struct {
-	Page     int    `json:"page" `
-	PerPage  int    `json:"perPage" `
-	OrderBy  string `json:"orderBy" `
-	OrderDir string `json:"orderDir" `
+type ListParams struct {
+	IsTreeList    bool
+	ParentIdField string
+	IdField       string
+	ChildrenField string
+	RootParentId  interface{}
 }
 
-type IndexRes struct {
-	Total int64 `json:"total" `
-	Items any   `json:"items" `
-}
-
-type CrudController struct {
+type CrudController[T any] struct {
 	*BaseController
-	Model any
+	ListParams ListParams
+	Service    ICrudService
 }
 
-func (c *CrudController) Query(ctx http.Context) orm.Query {
-
-	return facades.Orm().WithContext(ctx).Query().Model(c.Model)
+func NewCrudController[Model any]() *CrudController[Model] {
+	return &CrudController[Model]{
+		Service: NewCrudService[Model](),
+	}
 }
 
-// List 通用列表查询，支持分页和排序
-// ctx: HTTP上下文
-// scopes: 可选的查询作用域
-// 返回：数据列表、总条数、错误信息
-func (c *CrudController) List(ctx http.Context, scopes ...func(orm.Query) orm.Query) (items any, total int64, err error) {
-
-	var req IndexReq
-	items = NewModelSlice(c.Model)
-	query := c.Query(ctx)
-	err = gconv.Struct(ctx.Request().Queries(), &req)
-	if err != nil {
-		return nil, 0, err
-	}
-	if req.OrderBy != "" {
-		query = query.OrderBy(req.OrderBy, req.OrderDir)
-	}
-	query = query.Scopes(scopes...)
-	if req.Page > 0 {
-		err = query.Paginate(req.Page, req.PerPage, items, &total)
+func (c *CrudController[T]) Index(ctx http.Context) http.Response {
+	var items any
+	var total int64
+	var err error
+	scopes := c.Service.GetListScopes(ctx)
+	if c.ListParams.IsTreeList {
+		var data any
+		data, err = c.Service.GetList(ctx, scopes...)
+		items = ListToTree(data,
+			c.ListParams.ParentIdField,
+			c.ListParams.IdField,
+			c.ListParams.ChildrenField,
+			c.ListParams.RootParentId)
 	} else {
-		err = query.Get(items)
+		page := ctx.Request().InputInt("page", 0)
+		perPage := ctx.Request().InputInt("perPage", 0)
+		items, total, err = c.Service.GetPageList(ctx, page, perPage, scopes...)
 	}
 	if err != nil {
-		return nil, 0, err
+		return c.Error(ctx, err)
 	}
-	return items, total, err
+	return c.Success(ctx, http.Json{
+		"items": items,
+		"total": total,
+	})
+}
+func (c *CrudController[T]) Show(ctx http.Context) http.Response {
+	id := ctx.Request().RouteInt("id")
+	scopes := c.Service.GetDetailScopes(ctx)
+	item, err := c.Service.GetDetail(ctx, id, scopes...)
+	if err != nil {
+		return c.Error(ctx, err)
+	}
+	return c.Success(ctx, item)
+}
+func (c *CrudController[T]) Store(ctx http.Context) http.Response {
+	item := c.Service.GetCreateData(ctx)
+	scopes := c.Service.GetCreateScopes(ctx)
+	err := c.Service.Create(ctx, item, scopes...)
+	if err != nil {
+		return c.Error(ctx, err)
+	}
+	return c.Success(ctx, http.Json{})
 }
 
-func (c *CrudController) Index(ctx http.Context) http.Response {
-	items, total, err := c.List(ctx)
+func (c *CrudController[T]) Update(ctx http.Context) http.Response {
+	var item T
+	ctx.Request().Bind(&item)
+	id := ctx.Request().RouteInt("id")
+	scopes := c.Service.GetUpdateScopes(ctx)
+	rowsAffected, err := c.Service.Update(ctx, id, item, scopes...)
 	if err != nil {
-		return Error(ctx, err)
+		return c.Error(ctx, err)
 	}
-	return Success(ctx, &IndexRes{
-		Total: total,
-		Items: items,
+	return c.Success(ctx, http.Json{
+		"rows_affected": rowsAffected,
 	})
 }
 
-func (c *CrudController) Store(ctx http.Context) http.Response {
-	item := ctx.Request().All()
-	err := c.Query(ctx).Create(item)
+func (c *CrudController[T]) Destroy(ctx http.Context) http.Response {
+	ids := strings.Split(ctx.Request().Route("id"), ",")
+	scopes := c.Service.GetDeleteScopes(ctx)
+	rowsAffected, err := c.Service.Delete(ctx, ids, scopes...)
 	if err != nil {
-		return Error(ctx, err)
+		return c.Error(ctx, err)
 	}
-	return Success(ctx, item)
-}
-
-func (c *CrudController) Show(ctx http.Context) http.Response {
-	var item any = NewModel(c.Model)
-	id := ctx.Request().RouteInt64("id")
-	err := c.Query(ctx).Where("id", id).FindOrFail(&item)
-	if err != nil {
-		return Error(ctx, err)
-	}
-	return Success(ctx, item)
-}
-
-func (c *CrudController) Update(ctx http.Context) http.Response {
-	id := ctx.Request().RouteInt64("id")
-	result, err := c.Query(ctx).Where("id", id).Update(ctx.Request().All())
-	if err != nil {
-		return Error(ctx, err)
-	}
-	return Success(ctx, result)
-}
-
-func (c *CrudController) Destroy(ctx http.Context) http.Response {
-	ids := ctx.Request().Route("id")
-	result, err := c.Query(ctx).Where("id", strings.Split(ids, ",")).Delete()
-	if err != nil {
-		return Error(ctx, err)
-	}
-	return Success(ctx, result)
+	return c.Success(ctx, http.Json{
+		"rows_affected": rowsAffected,
+	})
 }
