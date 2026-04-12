@@ -2,17 +2,17 @@ package responses
 
 // 主配置结构体，对应整个JSON对象
 type AdminTheme struct {
-	Nav                  Nav            `json:"nav"`
-	Assets               Assets         `json:"assets"`
-	AppName              string         `json:"app_name"`
-	Locale               string         `json:"locale"`
-	Layout               Layout         `json:"layout"`
-	Logo                 string         `json:"logo"`
-	LoginCaptcha         bool           `json:"login_captcha"`
-	LocaleOptions        []LocaleOption `json:"locale_options"`
-	ShowDevelopmentTools bool           `json:"show_development_tools"`
-	SystemThemeSetting   interface{}    `json:"system_theme_setting"` // 使用interface{}因为值可能为null
-	EnabledExtensions    []interface{}  `json:"enabled_extensions"`   // 空数组，使用interface{}兼容任何类型
+	Nav                  Nav                    `json:"nav"`
+	Assets               Assets                 `json:"assets"`
+	AppName              string                 `json:"app_name"`
+	Locale               string                 `json:"locale"`
+	Layout               Layout                 `json:"layout"`
+	Logo                 string                 `json:"logo"`
+	LoginCaptcha         bool                   `json:"login_captcha"`
+	LocaleOptions        []LocaleOption         `json:"locale_options"`
+	ShowDevelopmentTools bool                   `json:"show_development_tools"`
+	SystemThemeSetting   map[string]interface{} `json:"system_theme_setting"` // 使用interface{}因为值可能为null
+	EnabledExtensions    []interface{}          `json:"enabled_extensions"`   // 空数组，使用interface{}兼容任何类型
 }
 
 // 导航配置结构体

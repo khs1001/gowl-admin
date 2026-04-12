@@ -3,9 +3,9 @@ package services
 import (
 	"context"
 
-	"github.com/gogf/gf/v2/encoding/gjson"
 	"github.com/goravel/framework/facades"
 	"github.com/khs1001/gowl-admin/models"
+	"gorm.io/datatypes"
 )
 
 type SettingService struct {
@@ -15,15 +15,18 @@ func NewSettingService() *SettingService {
 	return &SettingService{}
 }
 
-func (s *SettingService) Set(ctx context.Context, key string, value any) (err error) {
+func (s *SettingService) Set(ctx context.Context, key string, value datatypes.JSONMap) (err error) {
 	var adminSetting models.AdminSetting
 	adminSetting.Key = key
-	adminSetting.Value = gjson.New(value)
-	_, err = facades.Orm().WithContext(ctx).Query().Where("key", key).Update(&adminSetting)
+	adminSetting.Value = value
+	err = facades.Orm().WithContext(ctx).Query().Where("key", key).UpdateOrCreate(&adminSetting,
+		map[string]interface{}{"key": adminSetting.Key},
+		map[string]interface{}{"value": adminSetting.Value},
+	)
 	return err
 }
 
-func (s *SettingService) Get(ctx context.Context, key string) (result *gjson.Json, err error) {
+func (s *SettingService) Get(ctx context.Context, key string) (result datatypes.JSONMap, err error) {
 	var adminSetting models.AdminSetting
 	err = facades.Orm().WithContext(ctx).Query().Where("key", key).First(&adminSetting)
 	if err != nil {
@@ -37,5 +40,5 @@ func (s *SettingService) Scan(ctx context.Context, key string, pointer any, mapp
 	if err != nil {
 		return err
 	}
-	return value.Scan(pointer, mapping...)
+	return value.Scan(pointer)
 }

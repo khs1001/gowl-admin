@@ -56,14 +56,6 @@ func (s *AdminMenusSeeder) Run() error {
 			Visible:  1,
 			UrlType:  1,
 		},
-		{
-			ParentId: 2,
-			Title:    "设置",
-			Icon:     "akar-icons:settings-horizontal",
-			Url:      "/system/settings",
-			Visible:  1,
-			UrlType:  1,
-		},
 	}
 	return facades.Orm().Query().Create(data)
 }

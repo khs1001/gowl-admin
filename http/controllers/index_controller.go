@@ -32,8 +32,7 @@ func (c *IndexController) Settings(ctx http.Context) http.Response {
 		return c.Error(ctx, err)
 	}
 	//从数据库里读取系统配置
-	err = c.SettingService.Scan(ctx, consts.SystemThemeSetting, &setting.SystemThemeSetting)
-	if err != nil {
+	if setting.SystemThemeSetting, err = c.SettingService.Get(ctx, ctx.Request().Path()); err != nil {
 		return c.Error(ctx, err)
 	}
 	setting.Locale = facades.Config().GetString(consts.AppLocal)
@@ -42,6 +41,15 @@ func (c *IndexController) Settings(ctx http.Context) http.Response {
 }
 
 func (c *IndexController) SaveSettings(ctx http.Context) http.Response {
+	var setting responses.AdminTheme
+	err := ctx.Request().Bind(&setting)
+	if err != nil {
+		return c.Error(ctx, err)
+	}
+	err = c.SettingService.Set(ctx, ctx.Request().Path(), setting.SystemThemeSetting)
+	if err != nil {
+		return c.Error(ctx, err)
+	}
 	return c.Success(ctx, nil)
 }
 

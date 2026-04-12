@@ -14,13 +14,10 @@ import (
 
 // IndexRoute 注册管理后台首页路由
 // 参数 router：路由注册器实例，用于注册新的路由
-func IndexRoute(router route.Router) {
-	// 从配置中获取管理后台API前缀，如果未配置则使用默认值
-	adminApiPrefix := facades.Config().GetString(consts.AdminRoutePrefix, consts.DefaultApiPrefix)
+func IndexRoute(router route.Router, adminRoutePrefix string) {
 	// 生成管理后台首页的URL前缀（从API前缀中移除"-api"后缀）
-	adminIndexPrefix := str.Of(adminApiPrefix).RTrim("-api").String()
-	// 注册GET路由，用于提供管理后台首页
-	facades.Route().Get(adminIndexPrefix, func(ctx http.Context) http.Response {
+	adminIndexRoute := strings.TrimSuffix(adminRoutePrefix, "-api")
+	facades.Route().Get(adminIndexRoute, func(ctx http.Context) http.Response {
 		// 读取管理后台首页HTML文件内容
 		content, err := os.ReadFile(facades.App().PublicPath("admin-assets/index.html"))
 		// 如果文件读取失败，返回404错误
@@ -28,7 +25,7 @@ func IndexRoute(router route.Router) {
 			ctx.Request().Abort(http.StatusNotFound)
 		}
 		// 将HTML内容中的默认API前缀路径("/admin-api")替换为实际配置的API前缀
-		content = []byte(str.Of(string(content)).Replace(consts.DefaultApiPrefix, adminApiPrefix).String())
+		content = []byte(str.Of(string(content)).Replace(consts.DefaultApiPrefix, adminRoutePrefix).String())
 		// 返回修改后的HTML内容作为响应，状态码为200
 		return ctx.Response().Data(http.StatusOK, "text/html;", content)
 	})
@@ -38,6 +35,7 @@ func IndexRoute(router route.Router) {
 // 参数 parts：可选的路径部分，将被添加到基础API前缀之后
 // 返回值：完整的API路径前缀字符串
 func ApiPreix(parts ...string) string {
+
 	adminApiPrefix := facades.Config().GetString(consts.AdminRoutePrefix, consts.DefaultApiPrefix)
 	adminApiPrefix = strings.Join(append([]string{adminApiPrefix}, parts...), "/")
 	return adminApiPrefix

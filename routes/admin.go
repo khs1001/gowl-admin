@@ -10,9 +10,10 @@ import (
 func Admin(router route.Router) {
 
 	facades.Route().Static("/admin-assets", "./public/admin-assets")
-	core.IndexRoute(router)
+	adminRoutePrefix := core.ApiPreix()
+	core.IndexRoute(router, adminRoutePrefix)
 
-	router.Prefix(core.ApiPreix()).Group(func(router route.Router) {
+	router.Prefix(adminRoutePrefix).Group(func(router route.Router) {
 
 		// 系统相关
 		index := controllers.NewIndexController()
