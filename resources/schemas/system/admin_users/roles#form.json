@@ -7,5 +7,5 @@
     "labelField": "name",
     "valueField": "id",
     "joinValues": false,
-    "source":"/system/admin_role"
+    "source":"/system/admin_roles"
 }

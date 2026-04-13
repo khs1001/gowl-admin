@@ -10,7 +10,10 @@ type UserController struct {
 }
 
 func NewUserController() *UserController {
-	return &UserController{
+	c := &UserController{
 		CrudController: core.NewCrudController[models.AdminUser](),
 	}
+	c.Service.SetWiths([]string{"Roles"})
+	c.Service.SetAssociations([]string{"Roles"})
+	return c
 }
