@@ -18,8 +18,10 @@ func NewUserService() *UserService {
 
 func (s *UserService) Create(ctx http.Context, item any, scopes ...func(orm.Query) orm.Query) (err error) {
 	//密码加密
-	//默认账号名当作密码
-	item.(*models.AdminUser).Password, _ = facades.Hash().Make(item.(*models.AdminUser).Username)
+	//初始把账号名当作密码	//密码加密
+	if ctx.Request().Input("password") != "" {
+		item.(*models.AdminUser).Password, _ = facades.Hash().Make(ctx.Request().Input("password"))
+	}
 	return s.CrudService.Create(ctx, item, scopes...)
 }
 

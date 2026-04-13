@@ -1,0 +1,13 @@
+{
+    "type": "@form",
+    "api": "post:{{.Path}}",
+    "body": [
+		"@avatar#form",
+		"@username#form",
+		"@name#form",
+		"@password#form",
+		"@confirm_password#form",
+		"@roles#form",
+		"@enabled#form"
+    ]
+}
