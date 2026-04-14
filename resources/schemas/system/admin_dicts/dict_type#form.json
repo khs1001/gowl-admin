@@ -2,9 +2,9 @@
     "type": "input-tree",
     "name": "dict_type",
     "id": "dict_type_list",
-    "source": "get:{{.Path}}/dict_type_options",
-    "valueField": "id",
-    "labelField": "value",
+    "source": "get:{{.Path}}?type=dict_type",
+    "valueField": "value",
+    "labelField": "label",
     "showIcon": false,
     "searchable": false,
     "rootCreateTip": "新增字典类型",
@@ -12,48 +12,19 @@
     "creatable": true,
     "addControls": [
         {
-            "type": "input-text",
-            "name": "value",
-            "label": "类型名称",
-            "required": true,
-            "maxLength": 255
-        },
-        {
-            "type": "input-text",
-            "name": "key",
-            "label": "类型标识",
-            "required": true,
-            "maxLength": 255
-        },
-        {
-            "type": "switch",
-            "name": "enabled",
-            "label": "是否启用",
-            "value": 1
-        }
+            "type": "hidden",
+            "name": "type",
+            "value": "dict_type"
+         },
+        "@value#form",
+        "@label#form",
+        "@enabled#form"
     ],
     "editable": true,
     "editControls": [
-        {
-            "type": "input-text",
-            "name": "value",
-            "label": "类型名称",
-            "required": true,
-            "maxLength": 255
-        },
-        {
-            "type": "input-text",
-            "name": "key",
-            "label": "类型标识",
-            "required": true,
-            "maxLength": 255
-        },
-        {
-            "type": "switch",
-            "name": "enabled",
-            "label": "是否启用",
-            "value": 1
-        },
+        "@value#form",
+        "@label#form",
+        "@enabled#form",
         {
             "type": "hidden",
             "name": "id"
@@ -63,14 +34,14 @@
     "addApi": "post:{{.Path}}",
     "editApi": "put:{{.Path}}/${id}",
     "deleteApi": "delete:{{.Path}}/${id}",
-    "menuTpl": "<span class=\"${!enabled ? \"text-gray-300\" : \"\"} w-1/5\">${value}</div>",
+    "menuTpl": "<span class=\"${!enabled ? \"text-gray-300\" : \"\"} w-1/5\">${label}</div>",
     "onEvent": {
         "change": {
             "actions": [
                 {
                     "actionType": "url",
                     "args": {
-                        "url": "{{.Path}}?dict_type=${dict_type}"
+                        "url": "{{.Path}}?type=${dict_type}"
                     }
                 }
             ]

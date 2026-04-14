@@ -1,0 +1,7 @@
+{
+    "type": "input-text",
+    "name": "label",
+    "label": "标题",
+    "required": true,
+    "maxLength": 255
+}

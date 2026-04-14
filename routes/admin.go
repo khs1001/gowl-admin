@@ -28,12 +28,16 @@ func Admin(router route.Router) {
 		router.Get("current-user", auth.CurrentUser) // 获取当前用户信息
 		router.Get("menus", auth.Menus)              // 获取菜单信息
 
-		// 系统管理
-		router.Prefix("system").Group(func(router route.Router) {
+		// 权限管理
+		router.Prefix("auth").Group(func(router route.Router) {
 			router.Resource("admin_menus", controllers.NewMenuController()) // 菜单管理
 			router.Resource("admin_roles", controllers.NewRoleController()) // 角色管理
 			router.Resource("admin_users", controllers.NewUserController()) // 用户管理
 
+		})
+		// 系统管理
+		router.Prefix("system").Group(func(router route.Router) {
+			router.Resource("admin_dicts", controllers.NewDictController()) // 字典管理
 		})
 	})
 }

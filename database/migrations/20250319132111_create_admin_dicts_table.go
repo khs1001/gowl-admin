@@ -19,8 +19,9 @@ func (r *M20250319132111CreateAdminDictsTable) Up() error {
 		return facades.Schema().Create("admin_dicts", func(table schema.Blueprint) {
 			table.ID()
 			table.String("type", 50).Comment("字典类型")
-			table.String("label", 50).Comment("标签")
+			table.String("parent_value", 50).Comment("上级")
 			table.String("value", 50).Comment("字典值")
+			table.String("label", 50).Comment("标签")
 			table.Json("options").Nullable().Comment("配置")
 			table.TinyInteger("enabled").Nullable().Comment("可用").Default(1)
 			table.TinyInteger("sort").Nullable().Comment("排序").Default(0)

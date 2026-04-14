@@ -32,3 +32,13 @@ func (s *UserService) Update(ctx http.Context, id any, item any, scopes ...func(
 	}
 	return s.CrudService.Update(ctx, id, item, scopes...)
 }
+
+func (s *UserService) GetList(ctx http.Context, scopes ...func(orm.Query) orm.Query) (items any, total int64, err error) {
+	//增加查询条件
+	scopeWhere := func(query orm.Query) orm.Query {
+		query = query.Where("type", ctx.Request().Input("type"))
+		return query
+	}
+	scopes = append(scopes, scopeWhere)
+	return s.CrudService.GetList(ctx, scopes...)
+}
