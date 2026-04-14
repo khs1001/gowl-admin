@@ -4,6 +4,7 @@ import (
 	"reflect"
 
 	"github.com/gogf/gf/v2/util/gconv"
+	"github.com/goravel/framework/facades"
 )
 
 // ListToTree 利用反射将列表转换为树形结构
@@ -25,19 +26,24 @@ func ListToTree(nodes interface{}, parentIdField, idField, childrenField string,
 		node := val.Index(i)
 		// 获取节点的父ID值
 		parentIdVal := GetFieldValue(node, parentIdField)
+
 		if gconv.String(parentIdVal) == gconv.String(rootParentId) {
 			// 递归查找子节点
 			children := ListToTree(nodes, parentIdField, idField, childrenField, GetFieldValue(node, idField))
 			// 设置子节点
 			if children != nil {
+
+				// 设置子节点
 				SetFieldValue(node, childrenField, children)
 			}
 
 			// 添加到结果集
 			result = reflect.Append(result, node)
+
 		}
 	}
 
+	facades.Log().Info(result.Interface())
 	return result.Interface()
 }
 

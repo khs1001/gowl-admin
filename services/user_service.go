@@ -13,7 +13,13 @@ type UserService struct {
 }
 
 func NewUserService() *UserService {
-	return &UserService{}
+	s := &UserService{
+		CrudService: core.NewCrudService[models.AdminUser](),
+	}
+	s.SetWiths([]string{"Roles"})
+	s.SetAssociations([]string{"Roles"})
+
+	return s
 }
 
 func (s *UserService) Create(ctx http.Context, item any, scopes ...func(orm.Query) orm.Query) (err error) {
@@ -31,14 +37,4 @@ func (s *UserService) Update(ctx http.Context, id any, item any, scopes ...func(
 		item.(*models.AdminUser).Password, _ = facades.Hash().Make(ctx.Request().Input("password"))
 	}
 	return s.CrudService.Update(ctx, id, item, scopes...)
-}
-
-func (s *UserService) GetList(ctx http.Context, scopes ...func(orm.Query) orm.Query) (items any, total int64, err error) {
-	//增加查询条件
-	scopeWhere := func(query orm.Query) orm.Query {
-		query = query.Where("type", ctx.Request().Input("type"))
-		return query
-	}
-	scopes = append(scopes, scopeWhere)
-	return s.CrudService.GetList(ctx, scopes...)
 }

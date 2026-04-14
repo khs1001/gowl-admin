@@ -1,7 +1,7 @@
 {
     "type": "@crud",
     "api": {
-		"url": "{{.Path}}?_action=getData&parent_id=${dict_type || 0}&page=${page}&perPage=${perPage}&orderBy=${orderBy}&orderDir=${orderDir}",
+		"url": "{{.Path}}?_action=getData&type=${type}&orderBy=sort&orderDir=asc",
 		"method": "get"
 	},
     "columns":[
@@ -12,6 +12,7 @@
         "@sort#column",
         "@created_at#column"
     ],
+    "footerToolbar":[],
     "syncLocation": true,
 	"quickSaveItemApi": {
 		"url": "{{.Path}}/${id}",

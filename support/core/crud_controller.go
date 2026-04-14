@@ -20,9 +20,15 @@ type CrudController[T any] struct {
 	Service    ICrudService
 }
 
-func NewCrudController[Model any]() *CrudController[Model] {
+func NewCrudController[Model any](services ...ICrudService) *CrudController[Model] {
+	var service ICrudService
+	if len(services) != 0 {
+		service = services[0]
+	} else {
+		service = NewCrudService[Model]()
+	}
 	return &CrudController[Model]{
-		Service: NewCrudService[Model](),
+		Service: service,
 	}
 }
 

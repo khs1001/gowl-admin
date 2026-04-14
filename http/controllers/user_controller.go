@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/khs1001/gowl-admin/models"
+	"github.com/khs1001/gowl-admin/services"
 	"github.com/khs1001/gowl-admin/support/core"
 )
 
@@ -11,9 +12,7 @@ type UserController struct {
 
 func NewUserController() *UserController {
 	c := &UserController{
-		CrudController: core.NewCrudController[models.AdminUser](),
+		CrudController: core.NewCrudController[models.AdminUser](services.NewUserService()),
 	}
-	c.Service.SetWiths([]string{"Roles"})
-	c.Service.SetAssociations([]string{"Roles"})
 	return c
 }

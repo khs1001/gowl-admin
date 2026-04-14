@@ -25,5 +25,6 @@ type AdminDict struct {
 	// Sort 排序，JSON 标签为 "sort"
 	Sort *int8 `gorm:"type:tinyint;comment:排序;default:0" json:"sort"`
 	// Remark 备注，移除 size 属性，JSON 标签为 "remark"
-	Remark string `gorm:"comment:备注" json:"remark"`
+	Remark   string       `gorm:"comment:备注" json:"remark"`
+	Children []*AdminDict `json:"children" gorm:"-"`
 }

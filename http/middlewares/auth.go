@@ -34,8 +34,6 @@ func Auth(ctx http.Context) {
 		}
 	}
 	token := ctx.Request().Header(consts.Authorization)
-
-	facades.Log().Debug("token", token)
 	if token == "" {
 		core.UnAuthorized(ctx)
 		return
@@ -43,7 +41,6 @@ func Auth(ctx http.Context) {
 
 	guard := facades.Config().GetString(consts.AdminAuthGuard)
 	payload, err := facades.Auth(ctx).Guard(guard).Parse(token)
-	facades.Log().Debugf("payload %v, err %v", payload, err)
 
 	if err != nil {
 		core.UnAuthorized(ctx)

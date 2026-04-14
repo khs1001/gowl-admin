@@ -2,9 +2,9 @@
     "type":"@form",
     "id": "dict_item_form",
     "body":[
-        "@parent_id#form",
+        "@type#form",  
+        "@label#form",   
         "@value#form",
-        "@key#form",   
         "@sort#form",   
         "@enabled#form"
     ]

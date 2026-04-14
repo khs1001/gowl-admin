@@ -11,19 +11,14 @@
     "selectFirst": true,
     "creatable": true,
     "addControls": [
-        {
-            "type": "hidden",
-            "name": "type",
-            "value": "dict_type"
-         },
-        "@value#form",
         "@label#form",
+        "@value#form",
         "@enabled#form"
     ],
     "editable": true,
     "editControls": [
-        "@value#form",
         "@label#form",
+        "@value#form",
         "@enabled#form",
         {
             "type": "hidden",
@@ -31,7 +26,17 @@
         }
     ],
     "removable": true,
-    "addApi": "post:{{.Path}}",
+    "addApi": {
+        "url": "{{.Path}}",
+        "method": "post",
+        "data": {
+            "type": "dict_type",
+            "value": "${value}",
+            "label": "${label}",
+            "enabled": "${enabled}",
+            "parent_value": "${parent.value}"
+        }
+    },
     "editApi": "put:{{.Path}}/${id}",
     "deleteApi": "delete:{{.Path}}/${id}",
     "menuTpl": "<span class=\"${!enabled ? \"text-gray-300\" : \"\"} w-1/5\">${label}</div>",
