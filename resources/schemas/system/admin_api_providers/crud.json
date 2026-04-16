@@ -1,0 +1,19 @@
+{
+    "type": "@crud",
+    "columns":[
+        "@id#column",
+        "@type#column",
+        "@protocol#column",
+        "@name#column",
+        "@code#column",
+        "@enabled#column",
+        "@created_at#column"
+    ],
+	"quickSaveItemApi": {
+		"url": "{{.Path}}/${id}",
+		"method": "put",
+		"data": {
+			"enabled":"${enabled}"
+		}
+	}
+}

@@ -9,8 +9,6 @@ import (
 // AdminDicts 表示 admin_dicts 表的模型
 type AdminDict struct {
 	orm.Model
-	// ID 主键，JSON 标签为 "id"
-	ID          uint   `gorm:"primaryKey" json:"id"`
 	ParentValue string `gorm:"comment:上级" json:"parent_value"`
 	// Type 字典类型，移除 size 属性，JSON 标签为 "type"
 	Type string `gorm:"comment:字典类型" json:"type"`

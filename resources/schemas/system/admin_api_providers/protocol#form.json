@@ -1,0 +1,10 @@
+{
+    "type":"select",
+    "name":"protocol",
+    "label":"协议",
+    "source":{
+        "method":"get",
+        "url":"/dict_options?type=${type}_protocol",
+        "sendOn":"${type}"
+    }
+}

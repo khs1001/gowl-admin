@@ -1,0 +1,11 @@
+{
+    "type": "@form",
+    "body": [
+        "@type#form",
+        "@protocol#form",
+        "@name#form",
+        "@code#form",
+        "@options#form",
+        "@enabled#form"
+    ]
+}

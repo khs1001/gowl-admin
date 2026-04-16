@@ -36,8 +36,12 @@ func Admin(router route.Router) {
 
 		})
 		// 系统管理
+		dict := controllers.NewDictController()
 		router.Prefix("system").Group(func(router route.Router) {
-			router.Resource("admin_dicts", controllers.NewDictController()) // 字典管理
+			router.Resource("admin_dicts", dict)                                           // 字典管理
+			router.Resource("admin_api_providers", controllers.NewApiProviderController()) // API 提供方管理
 		})
+		router.Get("dict_options", dict.DictOptions) // 字典选项
+
 	})
 }

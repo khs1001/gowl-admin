@@ -91,6 +91,14 @@ func (s *AdminMenusSeeder) Run() error {
 			Visible:  1,
 			UrlType:  1,
 		},
+		{
+			ParentId: int(systemData.ID),
+			Title:    "Api服务商",
+			Icon:     "streamline-freehand:server-api-cloud",
+			Url:      "/system/admin_api_providers",
+			Visible:  1,
+			UrlType:  1,
+		},
 	}
 	err = facades.Orm().Query().Create(data)
 	if err != nil {

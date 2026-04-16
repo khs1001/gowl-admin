@@ -1,0 +1,6 @@
+{
+    "type":"select",
+    "name":"type",
+    "label":"类型",
+    "source":"get:/dict_options?type=api_type"
+}

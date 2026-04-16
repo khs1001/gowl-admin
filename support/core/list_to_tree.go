@@ -4,7 +4,6 @@ import (
 	"reflect"
 
 	"github.com/gogf/gf/v2/util/gconv"
-	"github.com/goravel/framework/facades"
 )
 
 // ListToTree 利用反射将列表转换为树形结构
@@ -42,8 +41,6 @@ func ListToTree(nodes interface{}, parentIdField, idField, childrenField string,
 
 		}
 	}
-
-	facades.Log().Info(result.Interface())
 	return result.Interface()
 }
 

@@ -35,7 +35,9 @@ func init() {
 			// 是否启用权限
 			"enabled": config.Env("ADMIN_PERMISSION_ENABLED", true),
 			//白名单: 请求方式 + 注册时的路由(支持正则)
-			"exclude": []string{},
+			"exclude": []string{
+				"get:/dict_options",
+			},
 		},
 		"layout": map[string]any{
 			// 浏览器标题, 功能名称使用 %title% 代替

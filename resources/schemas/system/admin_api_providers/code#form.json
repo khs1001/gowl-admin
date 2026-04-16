@@ -1,0 +1,6 @@
+{
+    "type":"input-text",
+    "label":"代码",
+    "name":"code",
+    "required":true
+}

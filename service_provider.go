@@ -66,6 +66,7 @@ func (r *ServiceProvider) RegisterMigrations(app foundation.Application) {
 		&migrations.M20250317203452CreateAdminRolesTable{},
 		&migrations.M20250317203500CreateAdminUsersTable{},
 		&migrations.M20250319132111CreateAdminDictsTable{},
+		&migrations.M20260414143735CreateAdminApiProvidersTable{},
 	)
 	app.MakeSchema().Register(AllMigrations)
 }
