@@ -1,18 +1,7 @@
 {
-    "type": "json-schema",
-    "name": "options",
-    "label": "参数",
-    "schema": {
-        "type": "object",
-        "properties": {
-            "api_endpoint": {
-                "type": "string",
-                "title": "地址"
-            },
-            "api_key": {
-                "type": "string",
-                "title": "密钥"
-            }
-        }
-    }
+    "type": "wrapper",
+    "body": [
+        "@options.api_endpoint#form",
+        "@options.api_key#form"
+    ]
 }

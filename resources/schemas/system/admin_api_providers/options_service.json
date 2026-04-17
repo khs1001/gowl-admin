@@ -1,0 +1,4 @@
+{
+        "type": "service",
+        "schemaApi": "/page_schema?sign=options%23form&path={{.Path}}/${type}/${protocol}"
+}
